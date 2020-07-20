@@ -48,14 +48,12 @@
 // Module Includes
 #include "eeprom.h"
 #include "modem.h"
+#include "message_handler.h"
 
 /* ***************************   Definitions   **************************** */
 
 #define MODEM_TASK_PRIORITY             3
 #define MSG_HANDLER_TASK_PRIORITY       2
-
-// Max size of any data string that could go to OR come from the modem
-#define MODEM_DATA_MAX_SIZE     50
 
 /* ****************************   Structures   **************************** */
 
@@ -69,8 +67,8 @@ int main(void)
 {
     // Setup the Hardware and init the tasks
     eepromInit();
-    modemInit(MODEM_TASK_PRIORITY, MODEM_DATA_MAX_SIZE);
-    msgHanderInit(MSG_HANDLER_TASK_PRIORITY, MODEM_DATA_MAX_SIZE);
+    modemInit(MODEM_TASK_PRIORITY);
+    msgHandlerInit(MSG_HANDLER_TASK_PRIORITY);
 
     // Tasks are setup, start the scheduler
     vTaskStartScheduler();

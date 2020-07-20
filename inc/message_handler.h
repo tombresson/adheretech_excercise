@@ -38,10 +38,19 @@
 
 /* ***************************   Definitions   **************************** */
 
+// Max size of any data string that could go to OR come from the modem
+#define MSG_DATA_MAX_SIZE           20
+
 /* ****************************   Structures   **************************** */
+
+typedef struct
+{
+    char msg[MSG_DATA_MAX_SIZE];
+}msgData_t;
 
 /* ***********************   Function Prototypes   ************************ */
 
-void msgHandlerInit(const int task_priority, const int max_message_size);
+void msgHandlerInit(const int task_priority);
+void msgHandlerModemMsg(const msgData_t *p_msg_data);
 
 #endif /* MESSAGE_HANDLER_H */

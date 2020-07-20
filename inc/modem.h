@@ -30,16 +30,25 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef AT_COMMAND_INTERP_H
-#define AT_COMMAND_INTERP_H
+#ifndef MODEM_H
+#define MODEM_H
 
 /* ***************************    Includes     **************************** */
 
 /* ***************************   Definitions   **************************** */
 
+// Max size of an AT command
+#define MODEM_AT_CMD_MAX_SIZE       50
+
 /* ****************************   Structures   **************************** */
 
-/* ***********************   Function Prototypes   ************************ */
-void modemInit(const int task_priority, const int max_message_size);
+typedef struct
+{
+    char modem_at_cmd_data[MODEM_AT_CMD_MAX_SIZE];
+}modemAtCmdData_t;
 
-#endif /* AT_COMMAND_INTERP_H */
+/* ***********************   Function Prototypes   ************************ */
+void modemInit(const int task_priority);
+void modemSendCommand(msgData_t *p_data_msg);
+
+#endif /* MODEM_H */

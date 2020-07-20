@@ -34,7 +34,6 @@
 /* ***************************    Includes     **************************** */
 
 // Standard Includes
-
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -56,12 +55,14 @@
 
 /* *************************   Public  Functions   ************************ */
 
-// Initializes the SPI interface and
+
 void eepromInit(void)
 {
+    // Initialize the SPI interface for using the EEPROM
     SPI_Init();
 }
 
+// Reads bytes from EEPROM
 bool eepromReadBytes(const uint32_t addr, uint8_t *bytes, const unsigned int num_bytes)
 {
     // Send SPI commands to setup EEPROM for reading data at specified address
@@ -78,7 +79,6 @@ bool eepromReadBytes(const uint32_t addr, uint8_t *bytes, const unsigned int num
     }
 
     // If no errors, return is true
-
     return result;
 }
 
